@@ -1,0 +1,98 @@
+import java.util.Scanner;
+public class ShopPriceComparison {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] products = {"Laptop", "Mouse", "Keyboard", "Monitor"};
+        int[] shopA = new int[4];
+        int[] shopB = new int[4];
+        System.out.println("Enter Shop A prices:");
+        for (int i = 0; i < products.length; i++) {
+            System.out.print(products[i] + ": Rs.");
+            shopA[i] = sc.nextInt();
+        }
+        System.out.println("\\nEnter Shop B prices:");
+        for (int i = 0; i < products.length; i++) {
+            System.out.print(products[i] + ": Rs.");
+            shopB[i] = sc.nextInt();
+        }
+        System.out.println("\\n--- Price Comparison ---");
+        for (int i = 0; i < products.length; i++) {
+            System.out.println(products[i]);
+            System.out.println("Shop A: Rs." + shopA[i]);
+            System.out.println("Shop B: Rs." + shopB[i]);
+            if (shopA[i] < shopB[i]) {
+                System.out.println("Lower price: Shop A");
+            } else if (shopB[i] < shopA[i]) {
+                System.out.println("Lower price: Shop B");
+            } else {
+                System.out.println("Both shops have the same price.");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}
+
+
+import java.util.Scanner;
+import java.util.Arrays;
+public class ProductPriceComparator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] products = new String[5];
+        int[] prices = new int[5];
+        // Input product details
+        System.out.println("PRODUCT PRICE COMPARATOR");
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Enter product name: ");
+            products[i] = sc.nextLine();
+            System.out.print("Enter product price: ");
+            prices[i] = sc.nextInt();
+            sc.nextLine();
+        }
+        // Display original product list
+        System.out.println("\\n--- Product List ---");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(products[i] + " - Rs." + prices[i]);
+        }
+        // Sort products according to price
+        for (int i = 0; i < 5; i++) {
+            for (int j = i + 1; j < 5; j++) {
+                if (prices[i] > prices[j]) {
+                    int temp = prices[i];
+                    prices[i] = prices[j];
+                    prices[j] = temp;
+                    String tempName = products[i];
+                    products[i] = products[j];
+                    products[j] = tempName;
+                }
+            }
+        }
+        // Display sorted products
+        System.out.println("\\n--- Products Sorted by Price ---");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(products[i] + " - Rs." + prices[i]);
+        }
+        // Search for a product
+        System.out.print("\\nEnter product name to search: ");
+        String search = sc.nextLine();
+        boolean found = false;
+        for (int i = 0; i < 5; i++) {
+            if (products[i].equalsIgnoreCase(search)) {
+                System.out.println("Product Found!");
+                System.out.println("Product Name: " + products[i]);
+                System.out.println("Product Price: Rs." + prices[i]);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Product not found!");
+        }
+        // Display the cheapest product
+        System.out.println("\\nCheapest Product: "
+PRODUCT PRICE COMPARATOR
+                + products[0] + " - Rs." + prices[0]);
+        sc.close();
+    }
+}
